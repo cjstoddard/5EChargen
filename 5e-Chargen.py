@@ -1,26 +1,36 @@
 import random
 
-# Define lists of possible values for each character attribute
-races = ['Human', 'Elf', 'Dwarf', 'Halfling']
-classes = ['Fighter', 'Rogue', 'Wizard', 'Cleric']
-abilities = ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma']
+# Race options
+races = ['Dwarf', 'Elf', 'Halfling', 'Human', 'Dragonborn', 'Gnome', 'Half-Elf', 'Half-Orc', 'Tiefling']
 
-# Define a function to generate a random character
-def generate_character():
-    race = random.choice(races)
-    class_ = random.choice(classes)
-    abilities_scores = []
-    for i in range(6):
-        rolls = [random.randint(1,6) for j in range(4)]
-        abilities_scores.append(sum(rolls) - min(rolls))
-    abilities_dict = dict(zip(abilities, abilities_scores))
-    return {'Race': race, 'Class': class_, 'Abilities': abilities_dict}
+# Class options
+classes = ['Barbarian', 'Bard', 'Cleric', 'Druid', 'Fighter', 'Monk', 'Paladin', 'Ranger', 'Rogue', 'Sorcerer', 'Warlock', 'Wizard']
 
-# Generate a random character and print the results
-random_character = generate_character()
-print('Random Character:')
-print(f"Race: {random_character['Race']}")
-print(f"Class: {random_character['Class']}")
-print("Abilities:")
-for ability, score in random_character['Abilities'].items():
-    print(f"{ability}: {score}")
+#Background options
+backgrounds = ['Acolyte', 'Charlatan', 'Criminal', 'Entertainer', 'Folk Hero', 'Guild Artisan', 'Hermit', 'Noble', 'Outlander', 'Sage', 'Sailor', 'Soldier', 'Urchin']
+
+# Ability scores
+ability_scores = ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma']
+
+# Define function for rolling ability scores
+def roll_ability_score():
+    dice_rolls = [random.randint(1, 6) for _ in range(4)]
+    return sum(sorted(dice_rolls, reverse=True)[:3])
+
+# Randomly select race, class, background and generates ability scores
+race = random.choice(races)
+character_class = random.choice(classes)
+character_background = random.choice(backgrounds)
+ability_scores = [roll_ability_score() for _ in range(6)]
+
+# Print character information
+print('Race:', race)
+print('Class:', character_class)
+print('Background:', character_background)
+print('Ability Scores:')
+print(f"STR: {ability_scores[0]}")
+print(f"DEX: {ability_scores[1]}")
+print(f"CON: {ability_scores[2]}")
+print(f"INT: {ability_scores[3]}")
+print(f"WIS: {ability_scores[4]}")
+print(f"CHA: {ability_scores[5]}")
