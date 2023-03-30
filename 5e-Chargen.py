@@ -51,7 +51,7 @@ for class_name, class_data in classes.items():
 if possible_classes:
     class_ = random.choice(possible_classes)
 else:
-    class_ = 'Fighter'
+    class_ = 'Commoner'
 
 # Print character information
 print('Race:', race)
