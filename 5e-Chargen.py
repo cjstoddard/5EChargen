@@ -56,6 +56,7 @@ else:
 # Print character information
 print('Race:', race)
 print('Class:', class_)
+print('Level:', level)
 print('Background:', background)
 print('Ability Scores:')
 print(f"STR: {ability_scores[0]}")
