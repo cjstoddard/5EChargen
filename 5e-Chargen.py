@@ -1,32 +1,62 @@
 import random
 
-# Race options
+# Define lists of possible character traits
 races = ['Dwarf', 'Elf', 'Halfling', 'Human', 'Dragonborn', 'Gnome', 'Half-Elf', 'Half-Orc', 'Tiefling']
-
-# Class options
-classes = ['Barbarian', 'Bard', 'Cleric', 'Druid', 'Fighter', 'Monk', 'Paladin', 'Ranger', 'Rogue', 'Sorcerer', 'Warlock', 'Wizard']
-
-# Background options
+classes = {
+    'Barbarian': {'required_score': 'STR', 'minimum_score': 13},
+    'Bard': {'required_score': 'CHA', 'minimum_score': 13},
+    'Cleric': {'required_score': 'WIS', 'minimum_score': 13},
+    'Druid': {'required_score': 'WIS', 'minimum_score': 13},
+    'Fighter': {'required_score': 'STR', 'minimum_score': 13},
+    'Monk': {'required_score': 'DEX', 'minimum_score': 13},
+    'Paladin': {'required_score': 'STR', 'minimum_score': 13},
+    'Ranger': {'required_score': 'DEX', 'minimum_score': 13},
+    'Rogue': {'required_score': 'DEX', 'minimum_score': 13},
+    'Sorcerer': {'required_score': 'CHA', 'minimum_score': 13},
+    'Warlock': {'required_score': 'CHA', 'minimum_score': 13},
+    'Wizard': {'required_score': 'INT', 'minimum_score': 13}
+}
 backgrounds = ['Acolyte', 'Charlatan', 'Criminal', 'Entertainer', 'Folk Hero', 'Guild Artisan', 'Hermit', 'Noble', 'Outlander', 'Sage', 'Sailor', 'Soldier', 'Urchin']
-
-# Ability scores
-ability_scores = ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma']
 
 # Define function for rolling ability scores
 def roll_ability_score():
     dice_rolls = [random.randint(1, 6) for _ in range(4)]
     return sum(sorted(dice_rolls, reverse=True)[:3])
 
-# Randomly select race, class, background and generates ability scores
+# Generate random character with ability scores and class
 race = random.choice(races)
-character_class = random.choice(classes)
-character_background = random.choice(backgrounds)
+background = random.choice(backgrounds)
+level = 1
 ability_scores = [roll_ability_score() for _ in range(6)]
+highest_score = max(ability_scores)
+
+# Filter out classes that the character is not eligible for
+possible_classes = []
+for class_name, class_data in classes.items():
+    if class_data['required_score'] in ['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA']:
+        if class_data['required_score'] == 'STR' and ability_scores[0] >= class_data['minimum_score']:
+            possible_classes.append(class_name)
+        elif class_data['required_score'] == 'DEX' and ability_scores[1] >= class_data['minimum_score']:
+            possible_classes.append(class_name)
+        elif class_data['required_score'] == 'CON' and ability_scores[2] >= class_data['minimum_score']:
+            possible_classes.append(class_name)
+        elif class_data['required_score'] == 'INT' and ability_scores[3] >= class_data['minimum_score']:
+            possible_classes.append(class_name)
+        elif class_data['required_score'] == 'WIS' and ability_scores[4] >= class_data['minimum_score']:
+            possible_classes.append(class_name)
+        elif class_data['required_score'] == 'CHA' and ability_scores[5] >= class_data['minimum_score']:
+            possible_classes.append(class_name)
+
+# If there are eligible classes, randomly choose one, otherwise set class to Commoner
+if possible_classes:
+    class_ = random.choice(possible_classes)
+else:
+    class_ = 'Fighter'
 
 # Print character information
 print('Race:', race)
-print('Class:', character_class)
-print('Background:', character_background)
+print('Class:', class_)
+print('Background:', background)
 print('Ability Scores:')
 print(f"STR: {ability_scores[0]}")
 print(f"DEX: {ability_scores[1]}")
