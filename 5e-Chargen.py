@@ -3,18 +3,18 @@ import random
 # Define lists of possible character traits
 races = ['Dwarf', 'Elf', 'Halfling', 'Human', 'Dragonborn', 'Gnome', 'Half-Elf', 'Half-Orc', 'Tiefling']
 classes = {
-    'Barbarian': {'required_score': 'STR', 'minimum_score': 13},
-    'Bard': {'required_score': 'CHA', 'minimum_score': 13},
-    'Cleric': {'required_score': 'WIS', 'minimum_score': 13},
-    'Druid': {'required_score': 'WIS', 'minimum_score': 13},
-    'Fighter': {'required_score': 'STR', 'minimum_score': 13},
-    'Monk': {'required_score': 'DEX', 'minimum_score': 13},
-    'Paladin': {'required_score': 'STR', 'minimum_score': 13},
-    'Ranger': {'required_score': 'DEX', 'minimum_score': 13},
-    'Rogue': {'required_score': 'DEX', 'minimum_score': 13},
-    'Sorcerer': {'required_score': 'CHA', 'minimum_score': 13},
-    'Warlock': {'required_score': 'CHA', 'minimum_score': 13},
-    'Wizard': {'required_score': 'INT', 'minimum_score': 13}
+    'Barbarian': {'required_score': 'STR', 'minimum_score': 15},
+    'Bard': {'required_score': 'CHA', 'minimum_score': 15},
+    'Cleric': {'required_score': 'WIS', 'minimum_score': 15},
+    'Druid': {'required_score': 'WIS', 'minimum_score': 15},
+    'Fighter': {'required_score': 'STR', 'minimum_score': 15},
+    'Monk': {'required_score': 'DEX', 'minimum_score': 15},
+    'Paladin': {'required_score': 'STR', 'minimum_score': 15},
+    'Ranger': {'required_score': 'DEX', 'minimum_score': 15},
+    'Rogue': {'required_score': 'DEX', 'minimum_score': 15},
+    'Sorcerer': {'required_score': 'CHA', 'minimum_score': 15},
+    'Warlock': {'required_score': 'CHA', 'minimum_score': 15},
+    'Wizard': {'required_score': 'INT', 'minimum_score': 15}
 }
 backgrounds = ['Acolyte', 'Charlatan', 'Criminal', 'Entertainer', 'Folk Hero', 'Guild Artisan', 'Hermit', 'Noble', 'Outlander', 'Sage', 'Sailor', 'Soldier', 'Urchin']
 
