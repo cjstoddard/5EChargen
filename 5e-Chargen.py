@@ -16,6 +16,8 @@ classes = {
     'Warlock': {'required_score': 'CHA', 'minimum_score': 15},
     'Wizard': {'required_score': 'INT', 'minimum_score': 15}
 }
+
+# Define backgrounds
 backgrounds = ['Acolyte', 'Charlatan', 'Criminal', 'Entertainer', 'Folk Hero', 'Guild Artisan', 'Hermit', 'Noble', 'Outlander', 'Sage', 'Sailor', 'Soldier', 'Urchin']
 
 # Define function for rolling ability scores
